@@ -2,34 +2,33 @@
 
 const phonePlus = document.getElementById("phone-plus");
     phonePlus.addEventListener("click", function (){
-
-        const current = document.getElementById("phoneQuantity").value;
-        const currentNumber = parseFloat(current);
-        let total = currentNumber + 1 ;
-        document.getElementById("phoneQuantity").value = total;
-        
-        const phonePrice = document.getElementById("phonePrice").innerText;
-        const phonePriceNumber = parseFloat(phonePrice);
-        let totalPhonePrice = phonePriceNumber + 1219 ;
-        document.getElementById("phonePrice").innerText = totalPhonePrice;
-
+        productHandler(true);
     } )
+
+// function for product handler 
+function productHandler (isPlus){
+    const current = document.getElementById("phoneQuantity").value;
+    const currentNumber = parseInt(current);
+    let total = currentNumber;
+    if ( isPlus == true ){
+        total = currentNumber + 1 ;
+    } 
+    if ( isPlus == false ){
+        total = currentNumber - 1 ;
+    }
+    document.getElementById("phoneQuantity").value = total;
+
+    let totalPhonePrice = total* 1219 ;
+    document.getElementById("phonePrice").innerText = '$'+ totalPhonePrice;
+    return totalPhonePrice;
+}
+
 
 // Phone minus
 
 const phoneMinus = document.getElementById("phone-minus");
     phoneMinus.addEventListener("click", function(){
-
-        const currentMinus = document.getElementById("phoneQuantity").value;
-        const currentMinusNumber = parseFloat(currentMinus);
-        let totalMinus = currentMinusNumber - 1 ;
-        document.getElementById("phoneQuantity").value = totalMinus;
-
-        const phonePriceMinus = document.getElementById("phonePrice").innerText;
-        const phonePriceMinusNumber = parseFloat(phonePriceMinus);
-        let totalPhoneMinusPrice = phonePriceMinusNumber - 1219 ;
-        document.getElementById("phonePrice").innerText = totalPhoneMinusPrice;
-
+        productHandler(false);
     })
 
 // Cover add
@@ -41,11 +40,9 @@ const coverPlus = document.getElementById("cover-plus");
         const currentCoverNumber = parseFloat(currentCover);
         let coverTotal = currentCoverNumber + 1 ;
         document.getElementById("coverQuantity").value = coverTotal;
-        
-        const coverPrice = document.getElementById("coverPrice").innerText;
-        const coverPriceNumber = parseFloat(coverPrice);
-        let totalCoverPrice = coverPriceNumber + 59 ;
-        document.getElementById("coverPrice").innerText = totalCoverPrice;
+
+        let totalCoverPrice = coverTotal * 59 ;
+        document.getElementById("coverPrice").innerText = '$'+ totalCoverPrice;
 
     } )
 
@@ -54,17 +51,17 @@ const coverPlus = document.getElementById("cover-plus");
 const coverMinus = document.getElementById("cover-minus");
     coverMinus.addEventListener("click", function(){
 
-        const currentCoverMinus = document.getElementById("coverQuantity").value;
-        const currentCoverMinusNumber = parseFloat(currentCoverMinus);
-        let totalCoverMinus = currentCoverMinusNumber - 1 ;
-        document.getElementById("coverQuantity").value = totalCoverMinus;
+        const currentCover = document.getElementById("coverQuantity").value;
+        const currentCoverNumber = parseFloat(currentCover);
+        let coverTotal = currentCoverNumber - 1 ;
+        document.getElementById("coverQuantity").value = coverTotal;
 
-        const coverPriceMinus = document.getElementById("coverPrice").innerText;
-        const coverPriceMinusNumber = parseFloat(coverPriceMinus);
-        let totalcoverMinusPrice = coverPriceMinusNumber - 59 ;
-        document.getElementById("coverPrice").innerText = totalcoverMinusPrice;
+        let totalCoverPrice = coverTotal * 59 ;
+        document.getElementById("coverPrice").innerText = '$'+ totalCoverPrice;
 
     })
+
+
 
 // total price 
 
